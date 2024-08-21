@@ -240,6 +240,16 @@ plt.show()
 
 import matplotlib.pyplot as plt
 
+team_performance = df.groupby('Team').agg({
+    'Gls': 'sum',
+    'Ast': 'sum',
+    'xG': 'sum',
+    'npxG': 'sum',
+    'xAG': 'sum'
+}).reset_index()
+
+
+
 top_teams = team_performance.sort_values(by='Gls', ascending=False).head(20)
 
 top_teams_gls_ast = top_teams.sort_values(by=['Gls', 'Ast'], ascending=[True, True])
